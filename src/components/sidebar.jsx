@@ -10,36 +10,96 @@ import { menuButton } from "../App";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-  const { mobileOpen, selectedIndex, handleDrawerToggle, handleListItemClick } =
-    useContext(menuButton);
+  const {
+    mobileOpen,
+    selectedIndex,
+    handleDrawerToggle,
+    handleListItemClick,
+    role,
+  } = useContext(menuButton);
 
   const handleChangePage = (e) => {
     let path = e.target.textContent.toLowerCase().split(" ").join("");
+    if (path == "reviews" || path == "doctors") path = "doctors";
+    else if (path == "myappointments" || path == "appointments")
+      path = "appointments";
+    else if (path == "myprofile" || path == "doctorprofile") path = "profile";
+
     props.setPath(path);
   };
   const drawer = (
     <div style={{ height: "100%" }}>
       <List>
+        {role == "doctor" && (
+          <ListItem
+            key={"Dasboard"}
+            disablePadding
+            selected={selectedIndex === 0}
+            onClick={(event) => handleListItemClick(event, 0)}
+          >
+            <ListItemButton onClick={handleChangePage}>
+              <ListItemText primary={"Dashboard"} sx={{ fontWeight: "bold" }} />
+            </ListItemButton>
+          </ListItem>
+        )}
         <ListItem
-          key={"Dashboard"}
-          disablePadding
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
-        >
-          <ListItemButton onClick={handleChangePage}>
-            <ListItemText primary={"Dashboard"} sx={{ fontWeight: "bold" }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          key={"Speciality"}
+          key={"doctors"}
           disablePadding
           selected={selectedIndex === 1}
           onClick={(event) => handleListItemClick(event, 1)}
         >
           <ListItemButton onClick={handleChangePage}>
-            <ListItemText primary={"Speciality"} sx={{ fontWeight: "bold" }} />
+            <ListItemText
+              primary={role == "doctor" ? "Reviews" : "Doctors"}
+              sx={{ fontWeight: "bold" }}
+            />
           </ListItemButton>
         </ListItem>
+        {(role == "" || role == "patient") && (
+          <ListItem
+            key={"Speciality"}
+            disablePadding
+            selected={selectedIndex === 2}
+            onClick={(event) => handleListItemClick(event, 2)}
+          >
+            <ListItemButton onClick={handleChangePage}>
+              <ListItemText
+                primary={"Speciality"}
+                sx={{ fontWeight: "bold" }}
+              />
+            </ListItemButton>
+          </ListItem>
+        )}
+        {role != "" && (
+          <ListItem
+            key={"appointment"}
+            disablePadding
+            selected={selectedIndex === 3}
+            onClick={(event) => handleListItemClick(event, 3)}
+          >
+            <ListItemButton onClick={handleChangePage}>
+              <ListItemText
+                primary={role == "patient" ? "My appointments" : "Appointments"}
+                sx={{ fontWeight: "bold" }}
+              />
+            </ListItemButton>
+          </ListItem>
+        )}
+        {role != "" && (
+          <ListItem
+            key={"account"}
+            disablePadding
+            selected={selectedIndex === 4}
+            onClick={(event) => handleListItemClick(event, 4)}
+          >
+            <ListItemButton onClick={handleChangePage}>
+              <ListItemText
+                primary={role == "patient" ? "My Profile" : "Doctor Profile"}
+                sx={{ fontWeight: "bold" }}
+              />
+            </ListItemButton>
+          </ListItem>
+        )}
       </List>
     </div>
   );

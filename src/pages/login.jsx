@@ -1,13 +1,15 @@
 import { Button, Grid, Link, TextField, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import InfoIcon from "@mui/icons-material/Info";
+import { menuButton } from "../App";
 
 export default function Login(props) {
   const navigate = useNavigate();
   const [logmsg, setLogmsg] = useState("");
   const [inputs, setInputs] = useState({});
+  const { setRole } = useContext(menuButton);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -25,12 +27,12 @@ export default function Login(props) {
           strategy: "local",
         }
       );
-      const url =
-        result.data.user.role === "doctor"
-          ? "/mydoctor/doctorDashboard"
-          : "/mydoctor/patientDashboard";
+      const url = "/mydoctor";
+      localStorage.setItem("role", result.data.user.role);
+      setRole(result.data.user.role);
       navigate(url);
     } catch (error) {
+      console.log(error);
       setLogmsg(error.response.data.message);
     }
   };

@@ -13,7 +13,8 @@ import { menuButton } from "../App";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { mobileOpen, handleDrawerToggle } = useContext(menuButton);
+  const { handleDrawerToggle, role, setRole } = useContext(menuButton);
+  console.log(role);
   return (
     <>
       <AppBar position="static" color="transparent" sx={{ padding: 2 }}>
@@ -42,14 +43,27 @@ export default function Navbar() {
             />
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                navigate("/mydoctor/auth/login");
-              }}
-            >
-              Login
-            </Button>
+            {role == "" ? (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  navigate("/mydoctor/auth/login");
+                }}
+              >
+                Login
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  localStorage.removeItem("role");
+                  setRole("");
+                  navigate("/mydoctor");
+                }}
+              >
+                Logout
+              </Button>
+            )}
           </Stack>
         </Toolbar>
       </AppBar>
