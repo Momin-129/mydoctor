@@ -24,7 +24,6 @@ export default function Tabular() {
 
     setImage(img);
     navigate(`/mydoctor/auth/${page}`);
-    console.log(path);
   };
 
   return (

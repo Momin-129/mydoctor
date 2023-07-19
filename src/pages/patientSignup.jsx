@@ -21,7 +21,7 @@ import {
   validateNumber,
   validateEmail,
   validatePassword,
-} from "../utility/formValidation";
+} from "../utility/formValidation.js";
 import axios from "axios";
 import InfoIcon from "@mui/icons-material/Info";
 
