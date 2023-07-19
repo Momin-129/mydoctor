@@ -15,7 +15,7 @@ export default function Dashboard(props) {
     <Box sx={{ flexGrow: 1, padding: 5 }}>
       <Grid container>
         <Grid item xs={12}>
-          <img src="/mydoctor/images/finalbanner.svg" alt="" />
+          <img src="/images/finalbanner.svg" alt="" />
         </Grid>
       </Grid>
       <Grid container>

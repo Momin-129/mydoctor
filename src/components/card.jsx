@@ -21,7 +21,7 @@ export default function Card(props) {
         <img
           src=""
           onError={(e) => {
-            e.target.src = "/mydoctor/images/alternative.svg";
+            e.target.src = "/images/alternative.svg";
             e.onerror = null;
           }}
           style={{ width: "100px" }}

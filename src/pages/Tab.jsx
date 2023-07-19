@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Tabular() {
   const [value, setValue] = useState("1");
-  const [image, setImage] = useState("/mydoctor/images/login.svg");
+  const [image, setImage] = useState("/images/login.svg");
   const navigate = useNavigate();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -19,11 +19,11 @@ export default function Tabular() {
     else page = "doctorSignup";
 
     newValue === "1"
-      ? (img = "/mydoctor/images/login.svg")
-      : (img = "/mydoctor/images/registration.svg");
+      ? (img = "/images/login.svg")
+      : (img = "/images/registration.svg");
 
     setImage(img);
-    navigate(`/mydoctor/auth/${page}`);
+    navigate(`/auth/${page}`);
   };
 
   return (

@@ -129,7 +129,6 @@ export default function PatientSignup(props) {
 
     try {
       let result = await axios.post(url, obj);
-      console.log(result);
       for (let item in inputs) {
         setInputs((inputs[item] = ""));
       }
@@ -137,10 +136,7 @@ export default function PatientSignup(props) {
       setRegmsg("Signed up succesfully");
     } catch (error) {
       setRegmsg("Signed up unsuccesfully");
-      console.log(error);
     }
-
-    console.log(obj);
   };
 
   return (
@@ -371,8 +367,8 @@ export default function PatientSignup(props) {
             color={"#303f9f"}
             onClick={() => {
               props.setValue("1");
-              props.setImage("/mydoctor/images/login.svg");
-              navigate("/mydoctor/auth/login");
+              props.setImage("/images/login.svg");
+              navigate("/auth/login");
             }}
           >
             Sign in

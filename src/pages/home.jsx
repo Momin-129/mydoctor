@@ -14,7 +14,7 @@ export default function Home() {
   const [path, setPath] = useState(role == "doctor" ? "dashboard" : "doctors");
   const navigate = useNavigate();
   useEffect(() => {
-    navigate(`/mydoctor/${path}`);
+    navigate(`/${path}`);
   }, [path]);
 
   return (

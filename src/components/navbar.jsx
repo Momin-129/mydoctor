@@ -33,11 +33,11 @@ export default function Navbar() {
             component="div"
             sx={{ flexGrow: 1 }}
             onClick={() => {
-              navigate("/mydoctor");
+              navigate("/");
             }}
           >
             <img
-              src="/mydoctor/images/logo.svg"
+              src="/images/logo.svg"
               alt="mydoctor"
               style={{ width: "150px" }}
             />
@@ -47,7 +47,7 @@ export default function Navbar() {
               <Button
                 variant="contained"
                 onClick={() => {
-                  navigate("/mydoctor/auth/login");
+                  navigate("/auth/login");
                 }}
               >
                 Login
@@ -58,7 +58,7 @@ export default function Navbar() {
                 onClick={() => {
                   localStorage.removeItem("role");
                   setRole("");
-                  navigate("/mydoctor");
+                  navigate("/");
                 }}
               >
                 Logout

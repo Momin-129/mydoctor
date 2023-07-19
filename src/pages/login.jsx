@@ -27,7 +27,7 @@ export default function Login(props) {
           strategy: "local",
         }
       );
-      const url = "/mydoctor";
+      const url = "/";
       localStorage.setItem("role", result.data.user.role);
       setRole(result.data.user.role);
       navigate(url);
@@ -124,8 +124,8 @@ export default function Login(props) {
           color={"#303f9f"}
           onClick={() => {
             props.setValue("2");
-            props.setImage("/mydoctor/images/registration.svg");
-            navigate("/mydoctor/auth/patientSignup");
+            props.setImage("/images/registration.svg");
+            navigate("/auth/patientSignup");
           }}
         >
           Sign up
