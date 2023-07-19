@@ -129,7 +129,7 @@ export default function Speciality() {
       </Grid>
       <Grid container>
         {slicedData.map((item) => (
-          <Grid item key={item} xs={12} sm={6} lg={3} sx={{ padding: 2 }}>
+          <Grid item key={item.name} xs={12} sm={6} lg={3} sx={{ padding: 2 }}>
             <Card name={item.name} />
           </Grid>
         ))}

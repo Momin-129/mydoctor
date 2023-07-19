@@ -28,7 +28,7 @@ export default function Dashboard(props) {
       </Grid>
       <Grid container>
         {data.map((item) => (
-          <Grid item key={item} xs={12} sm={6} lg={3} sx={{ padding: 2 }}>
+          <Grid item key={item.name} xs={12} sm={6} lg={3} sx={{ padding: 2 }}>
             <Card name={item.name} />
           </Grid>
         ))}
