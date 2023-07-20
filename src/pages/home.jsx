@@ -10,8 +10,7 @@ import Appointments from "./appointments";
 import Profile from "./profile";
 
 export default function Home() {
-  const { role } = useContext(menuButton);
-  const [path, setPath] = useState(role == "doctor" ? "dashboard" : "doctors");
+  const { path, setPath } = useContext(menuButton);
   const navigate = useNavigate();
   useEffect(() => {
     navigate(`/${path}`);

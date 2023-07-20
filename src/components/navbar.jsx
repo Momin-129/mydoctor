@@ -13,8 +13,7 @@ import { menuButton } from "../App";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { handleDrawerToggle, role, setRole } = useContext(menuButton);
-  console.log(role);
+  const { handleDrawerToggle, role, setRole, setPath } = useContext(menuButton);
   return (
     <>
       <AppBar position="static" color="transparent" sx={{ padding: 2 }}>
@@ -58,7 +57,8 @@ export default function Navbar() {
                 onClick={() => {
                   localStorage.removeItem("role");
                   setRole("");
-                  navigate("/");
+                  navigate("/doctors");
+                  setPath("doctors");
                 }}
               >
                 Logout

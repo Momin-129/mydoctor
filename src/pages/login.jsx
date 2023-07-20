@@ -9,7 +9,7 @@ export default function Login(props) {
   const navigate = useNavigate();
   const [logmsg, setLogmsg] = useState("");
   const [inputs, setInputs] = useState({});
-  const { setRole } = useContext(menuButton);
+  const { setRole, handleListItemClick } = useContext(menuButton);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -17,7 +17,7 @@ export default function Login(props) {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     try {
       const result = await axios.post(
         "http://my-doctors.net:8090/authentication",
@@ -27,8 +27,9 @@ export default function Login(props) {
           strategy: "local",
         }
       );
-      const url = "/";
+      const url = result.data.user.role == "doctor" ? "/dashboard" : "/doctors";
       localStorage.setItem("role", result.data.user.role);
+      handleListItemClick(e, 0);
       setRole(result.data.user.role);
       navigate(url);
     } catch (error) {

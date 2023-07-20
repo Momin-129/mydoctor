@@ -23,6 +23,7 @@ function App() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const [path, setPath] = useState(role == "doctor" ? "dashboard" : "doctors");
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -38,6 +39,8 @@ function App() {
           handleListItemClick,
           role,
           setRole,
+          path,
+          setPath,
         }}
       >
         <BrowserRouter>
